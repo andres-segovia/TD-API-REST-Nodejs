@@ -15,6 +15,7 @@
 	* Realiza una petición POST para comprar un producto especificando la cantidad requerida.
 	* Los datos son: _{ "title": STRING, quantity: INT }_
 	* **Nota:** 
+        - Si se intenta realizar una compra indicando una cantidad superior al stock disponible se informa que no puede realizar la compra más otros datos.
 		- Al realizar una compra de un tipo nos ofrece como recomendación comprar otros productos del mismo tipo. En el caso de que no haya otro similar sólo nos indicará que no hay recomendaciones. 
 		- Al realizar una compra superior a 3 unidades se indica a la persona su probabilidad de ganar. El porcentaje es en relación a la cantidad que compró con la cantidad total de todos los productos.
 	
