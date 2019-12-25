@@ -8,6 +8,8 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
+  const str_data = fs.readFileSync(settings.REL_PATH_DB, "utf-8");
+  const data = JSON.parse(str_data);
   if(!data !== null)
     res.status(200).json(data);
   else
