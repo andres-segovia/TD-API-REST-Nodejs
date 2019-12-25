@@ -26,3 +26,15 @@ exports.get_readable_format_size = function(bytes) {
     }
     return format;
 }
+
+exports.bubbleSort = function(myArr) {
+    const l = myArr.length;
+    for (let i = 0; i < l; i++) {
+        for (let j = 0; j < l - 1 - i; j++ ) {
+            if ( myArr[j].price > myArr[j + 1].price ) {
+                [ myArr[j], myArr[j + 1] ] = [ myArr[j + 1], myArr[j] ];
+            }
+        }
+    }  
+    return myArr;
+};
