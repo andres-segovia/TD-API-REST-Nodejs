@@ -13,8 +13,8 @@
 | ***api/products/types-products*** |  **GET** | _Muestra la cantidad de productos por tipo_ |
 | ***api/products/most-expensive*** |  **GET** | _Indicará cuál es el producto más caro_ |
 | ***api/products/most-cheapest*** |  **GET** | _Listará los 5 productos más baratos_ |
-| ***api/products/buyProduct*** |  **POST** | _Realiza una petición POST para comprar un producto especificando la cantidad 						      requerida. <br> **Los datos son: { "title": STRING, quantity: INT }**_ |
-| ***api/products/addProduct*** |  **POST** | _Petición POST para agregar un nuevo producto. <br> **Los datos son: { "title": STRING, quantity: INT }**_|
+| ***api/products/buyProduct*** |  **POST** | _Realiza una petición POST para comprar un producto especificando la cantidad 						      requerida. <br> **Los datos son: { "title": STRING, "quantity": INT }**_ |
+| ***api/products/addProduct*** |  **POST** | _Petición POST para agregar un nuevo producto. <br> **Los datos son: { "title": STRING, "type": STRING, "price": FLOAT, "stock": INT }**_|
 
 * **Nota:**
 	- Si se intenta realizar una compra indicando una cantidad superior al stock disponible se le informa que no puede realizar dicha compra más otros detalles.
