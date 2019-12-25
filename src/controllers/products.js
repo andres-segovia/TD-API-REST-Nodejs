@@ -13,7 +13,7 @@ exports.getProducts = (req, res, next) => {
   if(!data !== null)
     res.status(200).json(data);
   else
-    res.status(400).json({"ERROR": "La base de datos no existe o está corrupta."});
+    res.status(404).json({"ERROR": "La base de datos no existe o está corrupta."});
 };
 
 exports.getProduct = (req, res, next) => {
@@ -32,7 +32,7 @@ exports.getProduct = (req, res, next) => {
     d = data.products[index];
     res.status(200).json(d);
   } else {
-    res.status(400).json({"Error": "No existe producto con ese ID."});
+    res.status(404).json({"Error": "No existe producto con ese ID."});
   }
 };
 
@@ -53,7 +53,7 @@ exports.getProductParamTitle = (req, res, next) => {
     d = data.products[index];
     res.status(200).json(d);
   } else {
-    res.status(400).json({"Error": "No existe producto con nombre " + title});
+    res.status(404).json({"Error": "No existe producto con nombre " + title});
   }
 };
 
@@ -74,7 +74,7 @@ exports.getProductSearchTitle = (req, res, next) => {
     d = data.products[index];
     res.status(200).json(d);
   } else {
-    res.status(400).json({"Error": "No existe producto con nombre " + title});
+    res.status(404).json({"Error": "No existe producto con nombre " + title});
   }
 };
 
@@ -82,7 +82,7 @@ exports.getSearchProducts = (req, res, next) => {
   if(req.query['title']){
     this.getProductSearchTitle(req, res, next);
   } else {
-    res.status(404).json({"ERROR": "Parámetro incorrecto"});
+    res.status(400).json({"ERROR": "Parámetro incorrecto"});
   };
 }
 
@@ -146,7 +146,7 @@ exports.getFiveCheapestProducts = (req, res, next) => {
 exports.postBuyProduct = (req, res, next) => {
   const { title, quantity } = req.body;
   if (!title || !quantity)
-    res.status(500).json({"Error": "Debe completar los campos requeridos."});
+    res.status(400).json({"Error": "Debe completar los campos requeridos."});
   var index;
   var stock = 0;
   const str_data = fs.readFileSync(settings.REL_PATH_DB, "utf-8");
@@ -182,7 +182,7 @@ exports.postBuyProduct = (req, res, next) => {
           "Productos recomendados": prods
         });
       } else {
-        res.status(400).json({
+        res.status(404).json({
           "Error": "No hay stock para la cantidad especificada", 
           "Stock": stock, 
           "Cantidad requerida": quantity
@@ -192,7 +192,7 @@ exports.postBuyProduct = (req, res, next) => {
     index = i;
   }
   if (index !== undefined) {
-    res.status(400).json({
+    res.status(204).json({
       "Error": "No se ha realizado ninguna modificación"
     });
   }
@@ -201,7 +201,7 @@ exports.postBuyProduct = (req, res, next) => {
 exports.postAddProduct = (req, res, next) => {
   const { title, type, price, stock } = req.body;
   if (!title || !type || !price || !stock)
-    res.status(500).json({"Error": "Debe completar los campos requeridos."});
+    res.status(400).json({"Error": "Debe completar los campos requeridos."});
   
   const str_data = fs.readFileSync(settings.REL_PATH_DB, "utf-8");
   const data = JSON.parse(str_data);
@@ -215,7 +215,7 @@ exports.postAddProduct = (req, res, next) => {
     data.products.push(newObj);
     const str_json = JSON.stringify(data);
     fs.writeFileSync(settings.REL_PATH_DB, str_json, 'utf-8');
-    res.status(200).json({
+    res.status(201).json({
       "Estado": "Los datos se agregaron exitosamente.",
       "Info": {
         "Producto": title,
@@ -225,7 +225,7 @@ exports.postAddProduct = (req, res, next) => {
       }
     });
   } else {
-    res.status(400).json({
+    res.status(404).json({
       "Error": "El nombre del producto ya se encuentra disponible."
     });
   }
