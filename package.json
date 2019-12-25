@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-dev": "nodemon src/index.js",
-    "start-server": "node src/index.js"
+    "server": "node src/index.js"
   },
   "author": "Andy",
   "license": "MIT",
