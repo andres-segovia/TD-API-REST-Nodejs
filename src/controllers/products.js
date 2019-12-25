@@ -159,8 +159,9 @@ exports.postBuyProduct = (req, res, next) => {
         data.products[i].stock = stock - quantity;
         const str_json = JSON.stringify(data);
         // Obtenemos todos los productos del mismo tipo
-        const prods = jp.query(data, "$..products[?(@.type==\"" + data.products[i].type + "\")]");
         var index;
+        const prods = jp.query(data, "$..products[?(@.type==\"" + data.products[i].type + "\")]");
+        
         for (var i = 0; i < prods.length; i++) {
           if(prods[i].title === title) // Para eliminar el objeto de este producto actual.
             index = i;                 // Así no aparece en los productos recomendados
@@ -171,7 +172,7 @@ exports.postBuyProduct = (req, res, next) => {
         // Guardamos en el archivo los nuevos cambios
         fs.writeFileSync(settings.REL_PATH_DB, str_json, 'utf-8');
         
-        res.status(200).json({
+        var res_json = {
           "Estado": "Los datos se actualizaron exitosamente.",
           "Compra realizada" : {
             "Producto": title,
@@ -180,7 +181,18 @@ exports.postBuyProduct = (req, res, next) => {
             "Cantidad vendida": quantity
           },
           "Productos recomendados": prods
-        });
+        }
+        if (quantity > 3) {// Si el cliente hizo una compra de más de 3 productos
+          const arr_stocks = jp.query(data, "$..stock"); // Creará una lista con la cantidad de cada producto
+          var suma = 0;
+          for (var i = 0; i < arr_stocks.length; i++) {
+              suma += arr_stocks[i];
+          }
+          const probility = quantity * 100 / suma;
+          res_json["Probabilidad de ganar"] = probility.toPrecision(2) + "%"; // Agregamos la nueva clave
+        }
+        // Retornamos el JSON
+        res.status(200).json(res_json);
       } else {
         res.status(404).json({
           "Error": "No hay stock para la cantidad especificada", 

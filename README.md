@@ -14,7 +14,10 @@
 - **POST**  **api/products/buyProduct**
 	* Realiza una petición POST para comprar un producto especificando la cantidad requerida.
 	* Los datos son: _{ "title": STRING, quantity: INT }_
-	* **Nota:** Al realizar una compra de un tipo nos ofrece como recomendación comprar otros productos del mismo tipo. En el caso de que no haya otro similar no muetra nada. 
+	* **Nota:** 
+		- Al realizar una compra de un tipo nos ofrece como recomendación comprar otros productos del mismo tipo. En el caso de que no haya otro similar no muetra nada. 
+		- Al realizar una compra superior a 3 unidades se indica a la persona su probabilidad de ganar. El porcentaje es en relación a la cantidad que compró con la cantidad total de todos los productos.
+	
 - **POST**  **api/products/addProduct**
 	* Petición POST para agregar un nuevo producto.
 	* Los datos son: _{ "title": STRING, price: FLOAT, type: STRING, stock: INT }_
