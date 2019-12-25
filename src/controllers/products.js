@@ -16,6 +16,7 @@ exports.getProducts = (req, res, next) => {
     res.status(404).json({"ERROR": "La base de datos no existe o está corrupta."});
 };
 
+/*
 exports.getProduct = (req, res, next) => {
   let id = req.params.productId;
   var index;
@@ -35,6 +36,7 @@ exports.getProduct = (req, res, next) => {
     res.status(404).json({"Error": "No existe producto con ese ID."});
   }
 };
+*/
 
 // Obtenemos el producto indicando directamente como parámetro
 exports.getProductParamTitle = (req, res, next) => {
