@@ -2,11 +2,10 @@
 
 # TD-API-REST-NODEJS 
 
-# Host:
+## Host:
 - *http://localhost:8000/*
 
 ## Acceso a la API
-
 | Ruta 	                                 |  Método http  |  Descripción  |
 |----------------------------------------|:-------------:|:-------------|
 | ***api/products*** |   **GET**     | _Listará todos los productos_ |
