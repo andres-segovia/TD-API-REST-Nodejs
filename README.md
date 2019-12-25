@@ -27,3 +27,8 @@
 andy@pc:~$ npm run server
 ```
 
+## **NOTAS:**
+- En la carpeta _'OLD-VERSION'_ se encuentra todo lo que trabajé previo a obtener la base de datos real. En ese proyecto usé una base de datos casi similar a la real. Pero me sirvió para seguir trabajando. 
+- Además esa carpeta contiene el módulo para descargar la última versión de la base de datos de los servidores de **AWS**.
+
+
