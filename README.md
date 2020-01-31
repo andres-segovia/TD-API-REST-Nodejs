@@ -6,7 +6,7 @@
 - *http://localhost:8000/*
 
 ## Acceso a la API
-| Ruta 	                                 |  Método http  |  Descripción  |
+| Ruta                                   |  Método http  |  Descripción  |
 |----------------------------------------|:-------------:|:-------------|
 | ***api/products*** |   **GET**     | _Listará todos los productos_ |
 | ***api/products/search?title=keyword*** |  **GET** | _Buscar un determinado producto por su nombre_ |
@@ -29,9 +29,3 @@
 ```console
 andy@pc:~$ npm run server
 ```
-
-## **NOTAS:**
-- En la carpeta _'OLD-VERSION'_ se encuentra todo lo que trabajé previo a obtener la base de datos real. En ese proyecto usé una base de datos casi similar a la real. Pero me sirvió para seguir trabajando. 
-- Además esa carpeta contiene el módulo para descargar la última versión de la base de datos de los servidores de **AWS**.
-
-
