@@ -18,7 +18,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.17.1",
     "jsonpath": "^1.0.2",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "requests": "^0.3.0",
     "upgrade": "^1.1.0"
   }
